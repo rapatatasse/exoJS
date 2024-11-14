@@ -1,0 +1,27 @@
+1. faire memonter en JS le cadre zone manifestant pour qui touche le cadre Zone CRS
+(vous ne devez modifier seulement la class css .zone-manifestants avec le JS)
+
+2. Ajouter dans le cadre zone CRS l'image d'un crs
+
+3. Ajouter un bouton en HTML un bouton au milieu et en haut du fond d'écran avec le texte "+ CRS" et faire en sorte que cette image affiche le texte "action du bouton" dans la console
+
+4. Améliorer cette fonction pour que celle ci ajoute une image de CRS dans la Zone CRS  + a joute 1 au compteur de CRS
+
+5. Amélioration focntion si compteur >=5 ne rien faire
+
+6. faire une fonction match(nbcrs, nbJJ) 
+qui test si  (nbcrs * un chiffre aléatoir entre 1 et 5 > nbJJ * un chiffre aléatoir entre 1 et 3)
+et qui renvoir true ou flase en faction de la condition
+
+7. récupérer le nombre d'image de "jilet jaune.png" en JS
+
+8. Créer un bouton match qui appeller fonction boutonmatch() qui console log le nombre de CRS et de Jilet Jaune et appelle la fonction match() et 
+affiche le retour de la fonction match()
+
+9. améliorer boutonmatch() si retour true de match() supprimme une image Gilet jaune et la place que Zone Cellule 1 sinon supprimer image CRS
+
+10. Finaliser cette fonction en ajouter cette condition
+si plus de manifestants 
+    afficher l'image de l'Elu ❤️Mactron❤️ dans la zone manifestant avec le texte "Le prochaine qui se rebelle je lui créve les yeux"
+si plus de CRS
+    afficher l'image de l'Elu ❤️Mactron❤️dans la zone cellule 2 avec le texte "I'll be bitches "

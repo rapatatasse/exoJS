@@ -1,0 +1,96 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #161515;
+}
+
+/* Conteneur de l'image de fond */
+.background-image-container {
+    position: relative;
+    width: 1024px;
+    height: 1024px;
+    background-image: url('images/plateau.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styles pour les zones */
+.zoneroute {
+    position: absolute;
+    width: 180px;
+    /* 10% de 1024px */
+    height: 180px;
+    /* 10% de 1024px */
+    background-color: rgba(255, 168, 168, 0.8);
+    /* Semi-transparent */
+    border: 1px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    flex-wrap: wrap;
+    /* Assure que les images restent dans la zone */
+}
+
+.zonecellules {
+    position: absolute;
+    width: 102px;
+    /* 10% de 1024px */
+    height: 102px;
+    /* 10% de 1024px */
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Semi-transparent */
+    border: 1px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    flex-wrap: wrap;
+}
+
+.zoneroute img {
+    width: 35%;
+    object-fit: cover;
+}
+
+/* Positionnement des zones */
+.zone-crs {
+    top: 30%;
+    left: 45%;
+    transform: translateX(-50%);
+}
+
+.zone-manifestants {
+    top: 80%;
+    left: 85%;
+    transform: translate(-50%, -50%);
+}
+
+.zone-cell1 {
+    bottom: 15%;
+    left: 40%;
+    transform: translateX(-50%);
+}
+
+.zone-cell2 {
+    bottom: 35%;
+    left: 25%;
+    transform: translateX(-50%);
+}
+
+#nbCRSContainer {
+    position: absolute;
+    top: 10px;
+    padding: 5px;
+    border-radius: 10%;
+    font-size: 16px;
+    color: rgb(253, 249, 249);
+    margin: 10px;
+    background-color: aqua;
+}
