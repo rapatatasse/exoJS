@@ -100,7 +100,14 @@ d) Opérateurs d’affectation
 
 let num = 10;
 num += 5;  // num vaut 15
-2. Les Méthodes pour Récupérer un Élément HTML
+
+//transformer string en number
+let num = parseInt("10");
+console.log(num);  // 10 
+
+
+
+//2. Les Méthodes pour Récupérer un Élément HTML
 Pour manipuler un élément HTML en JavaScript, il faut d'abord le récupérer dans le code. Voici les méthodes les plus courantes :
 
 /*a) document.getElementById()
@@ -141,7 +148,7 @@ html
 
     < div id = "conteneur" class="maClasse" >
         <p>Bonjour !</p>
-</ >
+    </ >
     En JavaScript:
 
 

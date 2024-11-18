@@ -10,8 +10,8 @@ body {
 /* Conteneur de l'image de fond */
 .background-image-container {
     position: relative;
-    width: 1024px;
-    height: 1024px;
+    width: 100vh;
+    height: 100vh;
     background-image: url('images/plateau.jpg');
     background-size: cover;
     background-position: center;
@@ -61,8 +61,8 @@ body {
 
 /* Positionnement des zones */
 .zone-crs {
-    top: 30%;
-    left: 45%;
+    top: 25%;
+    left: 50%;
     transform: translateX(-50%);
 }
 
@@ -86,11 +86,33 @@ body {
 
 #nbCRSContainer {
     position: absolute;
-    top: 10px;
+    top: 5%;
     padding: 5px;
     border-radius: 10%;
     font-size: 16px;
     color: rgb(253, 249, 249);
     margin: 10px;
     background-color: aqua;
+}
+
+ul {
+    list-style-type: none;
+    /* Aucun style pour la liste */
+    padding: 0;
+    /* Supprimer les marges internes */
+    margin: 0;
+    /* Supprimer les marges externes */
+}
+
+.listeJJ {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    padding: 5px;
+    font-size: 16px;
+    color: rgb(167, 58, 58);
+    margin: 10px;
+    background-color: rgba(244, 255, 255, 0.799);
+    text-align: left;
+    text-decoration: none;
 }

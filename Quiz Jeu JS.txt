@@ -3,9 +3,9 @@
 
 2. Ajouter dans le cadre zone CRS l'image d'un crs
 
-3. Ajouter un bouton en HTML un bouton au milieu et en haut du fond d'écran avec le texte "+ CRS" et faire en sorte que cette image affiche le texte "action du bouton" dans la console
+3. Ajouter un bouton en HTML au milieu et en haut du fond d'écran avec le texte "+ CRS" et faire en sorte qu'au clic du bouton s'affiche "action du bouton" dans la console
 
-4. Améliorer cette fonction pour que celle ci ajoute une image de CRS dans la Zone CRS  + a joute 1 au compteur de CRS
+4. Améliorer cette fonction pour que celle-ci ajoute une image de CRS dans la Zone CRS  + a joute 1 au compteur de CRS
 
 5. Amélioration focntion si compteur >=5 ne rien faire
 
@@ -25,3 +25,18 @@ si plus de manifestants
     afficher l'image de l'Elu ❤️Mactron❤️ dans la zone manifestant avec le texte "Le prochaine qui se rebelle je lui créve les yeux"
 si plus de CRS
     afficher l'image de l'Elu ❤️Mactron❤️dans la zone cellule 2 avec le texte "I'll be bitches "
+
+
+11. En utilisant cette variable :
+
+Créer la liste des joureurs en fonction de la liste ci dessous en bouclant avec le JS
+const joueurs = [
+    { Nom: "Dupont", Niveau: 5 },
+    { Nom: "Martin", Niveau: 3 },
+    { Nom: "Durand", Niveau: 7 },
+    { Nom: "Moreau", Niveau: 4 },
+    { Nom: "Lemoine", Niveau: 6 }
+];
+
+
+Note: le JS dois être dans un ficheir à part

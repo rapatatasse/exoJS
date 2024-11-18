@@ -1,0 +1,19 @@
+1. Changer la couleur de fond du titre
+Question : Change la couleur de fond du bouton du deuxième produit en red.
+
+2. Changer le texte d'un élément
+Question : Change le texte du premier produit (Produit 1) en Produit 1 - En Promo.
+
+3. Supprimer un élément
+Question : Supprime le troisième produit de la page.
+
+4. Agrandir tous les titres de produit
+Question : Modifie la taille de tous les titres de produit (card-title) en leur appliquant la taille de police 2rem.
+
+5. Changer le texte en fonction d’une condition
+Question : Si total stock < 39 mettre fond colorer dans total stock.
+
+6. Afficher un message d’alerte
+Question : Affiche une alerte indiquant Produit ajouté au panier lorsque l’utilisateur clique sur le bouton Acheter du premier produit.
+
+7. Modifier le total du Stock  en ajouter le stock des trois produits dans la balise span totalStock .
