@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Cheat Sheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .example {
+            background-color: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #007bff;
+        }
+        h1, h2 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>SQL Cheat Sheet - Les Bases</h1>
+
+    <div class="section">
+        <h2>Qu'est-ce que SQL ?</h2>
+        <p>SQL (Structured Query Language) est un langage standardisé pour gérer et manipuler des bases de données relationnelles. Il permet de :</p>
+        <ul>
+            <li>Créer, modifier et supprimer des bases de données et des tables</li>
+            <li>Insérer, mettre à jour et supprimer des données</li>
+            <li>Effectuer des requêtes pour récupérer des informations</li>
+            <li>Gérer les accès aux données</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Création de Table</h2>
+        <p>La commande CREATE TABLE permet de créer une nouvelle table dans la base de données.</p>
+        <div class="example">
+            <code>
+                CREATE TABLE utilisateurs (<br>
+                &nbsp;&nbsp;id INT PRIMARY KEY AUTO_INCREMENT,<br>
+                &nbsp;&nbsp;nom VARCHAR(50) NOT NULL,<br>
+                &nbsp;&nbsp;email VARCHAR(100) UNIQUE,<br>
+                &nbsp;&nbsp;age INT,<br>
+                &nbsp;&nbsp;date_inscription DATE<br>
+                );
+            </code>
+        </div>
+        <p>Types de données courants :</p>
+        <ul>
+            <li>VARCHAR(n) : Texte de longueur variable</li>
+            <li>INT : Nombre entier</li>
+            <li>DATE : Date</li>
+            <li>DECIMAL(p,s) : Nombre décimal</li>
+            <li>BOOLEAN : Vrai/Faux</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Requêtes de Base</h2>
+        
+        <h3>SELECT - Lecture des données</h3>
+        <div class="example">
+            <code>
+                -- Sélectionner toutes les colonnes<br>
+                SELECT * FROM utilisateurs;<br><br>
+                -- Sélectionner des colonnes spécifiques<br>
+                SELECT nom, email FROM utilisateurs;<br><br>
+                -- Avec condition<br>
+                SELECT * FROM utilisateurs WHERE age > 18;
+            </code>
+        </div>
+
+        <h3>INSERT - Insertion de données</h3>
+        <div class="example">
+            <code>
+                INSERT INTO utilisateurs (nom, email, age) <br>
+                VALUES ('Jean Dupont', 'jean@email.com', 25);
+            </code>
+        </div>
+
+        <h3>UPDATE - Mise à jour</h3>
+        <div class="example">
+            <code>
+                UPDATE utilisateurs<br>
+                SET age = 26<br>
+                WHERE nom = 'Jean Dupont';
+            </code>
+        </div>
+
+        <h3>DELETE - Suppression</h3>
+        <div class="example">
+            <code>
+                DELETE FROM utilisateurs<br>
+                WHERE id = 1;
+            </code>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Jointures (JOINS)</h2>
+        <p>Les jointures permettent de combiner des données de plusieurs tables.</p>
+
+        <h3>Exemple avec deux tables</h3>
+        <div class="example">
+            <code>
+                -- Structure des tables<br>
+                CREATE TABLE utilisateurs (<br>
+                &nbsp;&nbsp;id INT PRIMARY KEY AUTO_INCREMENT,<br>
+                &nbsp;&nbsp;nom VARCHAR(50) NOT NULL,<br>
+                &nbsp;&nbsp;email VARCHAR(100) UNIQUE,<br>
+                &nbsp;&nbsp;age INT,<br>
+                &nbsp;&nbsp;date_inscription DATE<br>
+                );
+
+                
+                CREATE TABLE villes (<br>
+                &nbsp;&nbsp;id INT PRIMARY KEY,<br>
+                &nbsp;&nbsp;utilisateur_id INT,<br>
+                &nbsp;&nbsp;name VARCHAR(50),<br>
+                &nbsp;&nbsp;FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id)<br>
+                );<br><br>
+
+                -- INNER JOIN<br>
+                SELECT utilisateurs.nom, villes.name<br>
+                FROM utilisateurs<br>
+                INNER JOIN villes ON utilisateurs.id = villes.utilisateur_id;<br><br>
+
+            </code>
+
+        </div>
+
+        <h3>Types de Jointures</h3>
+        <ul>
+            <li><strong>INNER JOIN</strong> : Retourne les enregistrements qui ont des correspondances dans les deux tables</li>
+            <li><strong>LEFT JOIN</strong> : Retourne tous les enregistrements de la table de gauche et les correspondances de la table de droite</li>
+            <li><strong>RIGHT JOIN</strong> : Retourne tous les enregistrements de la table de droite et les correspondances de la table de gauche</li>
+            <li><strong>FULL JOIN</strong> : Retourne tous les enregistrements des deux tables</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Fonctions d'Agrégation Courantes</h2>
+        <div class="example">
+            <code>
+                SELECT <br>
+                &nbsp;&nbsp;COUNT(*) as total,<br>
+                &nbsp;&nbsp;AVG(age) as moyenne_age,<br>
+                &nbsp;&nbsp;MAX(age) as age_max,<br>
+                &nbsp;&nbsp;MIN(age) as age_min<br>
+                FROM utilisateurs;
+            </code>
+        </div>
+    </div>
+</body>
+</html>
