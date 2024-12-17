@@ -1,0 +1,5 @@
+CREATE TABLE "XXXXX" (
+  "id" integer PRIMARY KEY,
+
+  "created_at" timestamp
+);

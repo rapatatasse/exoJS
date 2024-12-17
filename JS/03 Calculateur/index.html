@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculateur de Surface de Carrelage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 50px;
+        }
+        .calculator-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+        .title {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .result {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="calculator-container">
+            <h1 class="title">Calculateur de Surface</h1>
+          
+                <div class="mb-4">
+                    <label for="longueur" class="form-label">Longueur (en mètres)</label>
+                    <input type="number" class="form-control" id="longueur" step="0.01" min="0" required>
+                </div>
+                <div class="mb-4">
+                    <label for="largeur" class="form-label">Largeur (en mètres)</label>
+                    <input type="number" class="form-control" id="largeur" step="0.01" min="0" required>
+                </div>
+
+                <div class="row align-items-center mb-4">
+                    <div class="col-md-4">
+                        <label for="carreauLongueur" class="form-label">Largeur carreau</label>
+                        <select class="form-select" id="carreauLongueur" required>
+                            <option value="">Choisir...</option>
+                            <option value="100">100 mm</option>
+                            <option value="200">200 mm</option>
+                            <option value="250">250 mm</option>
+                            <option value="300">300 mm</option>
+                            <option value="500">500 mm</option>
+                            <option value="600">600 mm</option>
+                            <option value="900">900 mm</option>
+                        </select>
+                    </div>
+                    <div class="col-md-8 text-center">
+                        <img src="document/carrelage.png" alt="Exemple de carrelage" class="img-fluid rounded shadow-sm" style="max-width: 150px; margin: 10px 0;">
+                    </div>
+                    <div class="col-md-6 text-center">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="carreauLargeur" class="form-label">Largeur carreau</label>
+                        <select class="form-select" id="carreauLargeur" required>
+                            <option value="">Choisir...</option>
+                            <option value="100">100 mm</option>
+                            <option value="200">200 mm</option>
+                            <option value="250">250 mm</option>
+                            <option value="300">300 mm</option>
+                            <option value="500">500 mm</option>
+                            <option value="600">600 mm</option>
+                            <option value="900">900 mm</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="alert alert-secondary" role="alert">
+                    Paquet de 4 carreaux
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary btn-lg" onclick="calculerSurface()">Calculer la surface</button>
+                </div>
+            
+            <div class="result" id="resultat">
+                <div>Surface totale : <span id="surface">0</span> m²</div>
+                <div>nombre de carreaux : <span id="nbcarreaux">0</span></div>
+                <div>nombre de paquets : <span id="nbpaquets">0</span></div>
+                <div>nombre de m² à commander : <span id="nbm2">0</span></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="document/validation/test.js"></script>
+</body>
+</html>
