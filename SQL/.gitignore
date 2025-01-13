@@ -1,0 +1,19 @@
+# Ignore le dossier correction et son contenu
+/correction/
+
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Fichiers d'environnement
+.env
+.env.local
+.env.*.local
+
+# Fichiers de logs
+*.log
+
+# Fichiers temporaires
+*.tmp
+*~

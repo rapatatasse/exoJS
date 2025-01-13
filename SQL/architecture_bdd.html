@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture des Bases de Données</title>
+    <link rel="stylesheet" href="documents/style.css">
+</head>
+<body>
+    <a href="index.html" class="back-button">Retour</a>
+    <h1>Architecture des Bases de Données</h1>
+
+    <div class="container">
+        <h2>1. MCD (Modèle Conceptuel de Données)</h2>
+        <p>Le MCD est une représentation graphique des données qui permet de décrire de manière formelle les données d'un système d'information.</p>
+        
+        <div class="example">
+            <h3>Exemple avec notre bibliothèque:</h3>
+            <pre>
+BOOK: (id, name, date, content)
+AUTHOR: (id, firstname, lastname, date_of_birth)
+WRITES: (#book_id, #author_id)  /* Association N:M */
+            </pre>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>2. Merise2</h2>
+        <p>Merise2 est une méthode française de conception de systèmes d'information. Elle utilise plusieurs niveaux de modélisation:</p>
+        
+        <h3>MCD (déjà vu)</h3>
+        <h3>MLD (Modèle Logique de Données)</h3>
+        <div class="example">
+            <pre>
+Books (
+    PK: id INT,
+    name VARCHAR(255),
+    date DATE,
+    content TEXT
+)
+
+Authors (
+    PK: id INT,
+    firstname VARCHAR(100),
+    lastname VARCHAR(100),
+    date_of_birth DATE
+)
+
+Book_Authors (
+    PK: id INT,
+    FK: book_id INT REFERENCES Books(id),
+    FK: author_id INT REFERENCES Authors(id)
+)
+            </pre>
+        </div>
+
+        <h3>MPD (Modèle Physique de Données)</h3>
+        <div class="example">
+            <pre>
+CREATE TABLE Books (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    date DATE,
+    content TEXT
+);
+
+CREATE TABLE Authors (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    firstname VARCHAR(100) NOT NULL,
+    lastname VARCHAR(100) NOT NULL,
+    date_of_birth DATE
+);
+
+CREATE TABLE Book_Authors (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    book_id INT,
+    author_id INT,
+    FOREIGN KEY (book_id) REFERENCES Books(id),
+    FOREIGN KEY (author_id) REFERENCES Authors(id)
+);
+            </pre>
+        </div>
+    </div>
+
+ 
+
+    <div class="container">
+        <h2>3. MLC (Modèle Logique Conceptuel)</h2>
+        <p>Le MLC est une représentation intermédiaire entre le MCD et le modèle physique.</p>
+        
+        <div class="example">
+            <h3>Exemple de données:</h3>
+            <h4>Table Books</h4>
+            <table>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>date</th>
+                    <th>content</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Le Petit Prince</td>
+                    <td>1943-04-06</td>
+                    <td>Il était une fois...</td>
+                </tr>
+            </table>
+
+            <h4>Table Authors</h4>
+            <table>
+                <tr>
+                    <th>id</th>
+                    <th>firstname</th>
+                    <th>lastname</th>
+                    <th>date_of_birth</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Antoine</td>
+                    <td>de Saint-Exupéry</td>
+                    <td>1900-06-29</td>
+                </tr>
+            </table>
+
+            <h4>Table Book_Authors</h4>
+            <table>
+                <tr>
+                    <th>id</th>
+                    <th>book_id</th>
+                    <th>author_id</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>1</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Points clés à retenir:</h2>
+        <ul>
+            <li>Le MCD représente les concepts métier</li>
+            <li>Le MLD traduit le MCD en structure de tables</li>
+            <li>Le MPD implémente le MLD dans un SGBD spécifique</li>
+            <li>Les relations N:M nécessitent une table de jonction</li>
+            <li>Chaque table doit avoir une clé primaire</li>
+            <li>Les relations sont matérialisées par des clés étrangères</li>
+        </ul>
+        <h2>Structure important de la base de données:</h2>
+        <ul>
+            <li>Nom des tables claires et concis et en Anglais</li>
+            <li>Champs clairs et concis et en Anglais</li>
+            <li>Clé primaire = id</li>
+            <li>Clé étrangère = nomdelatable_id  (ex: book_id, author_id) ne pas mettre le "s" à la fin</li>
+            <li>pas d'acentuation ni de majuscules ni d'espaces</li>
+        </ul>
+    </div>
+</body>
+</html>

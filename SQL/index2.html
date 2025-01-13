@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture Base de Données</title>
+    <link rel="stylesheet" href="documents/style.css">
+</head>
+<body>
+    <a href="index.html" class="back-button">Retour</a>
+    <h2>Exercice Requetes</h2>
+    <p>Créer une base de données contenant les importations des tables ville et departement du fichier documents </p>
+    <i>Aidez vous de xampp et lancer http://localhost/phpmyadmin</i>
+    <p>Répondre aux questions ci-dessous</p>
+
+    <div class="container">
+        <ol>
+            <li>Obtenir la liste des villes du nom des villesdont la population a augmenté d'au moins 50% entre 1999 et 2012</li>
+            <textarea id="sqlCode1" rows="5" cols="80" placeholder="Collez votre code SQL ici"></textarea>
+            <li>Calculer la densité de population (habitants par km²) pour toutes les villes, triées par densité décroissante en 2012</li>
+            <textarea id="sqlCode2" rows="5" cols="80" placeholder="Collez votre code SQL ici"></textarea>
+            <li>Trouver les départements qui ont plus de 100 communes</li>
+            <textarea id="sqlCode3" rows="5" cols="80" placeholder="Collez votre code SQL ici"></textarea>
+            <li>Lister le nom des 5 villes qui ont la plus grande surface</li>
+            <textarea id="sqlCode4" rows="5" cols="80" placeholder="Collez votre code SQL ici"></textarea>
+            <li>Obtenir le top 5 des départements ayant la plus de villes</li>
+            <textarea id="sqlCode5" rows="5" cols="80" placeholder="Collez votre code SQL ici"></textarea>
+            <li>Trouver les villes dont le nom se termine par "ville" et qui ont plus de 10000 habitants</li>
+            <textarea id="sqlCode6" rows="5" cols="80" placeholder="Collez votre code SQL ici"></textarea>
+            <li>Top 5 des villes qui ont le même nom</li>
+            <textarea id="sqlCode7" rows="5" cols="80" placeholder="Collez votre code SQL ici"></textarea>
+            <li>Calculer la distance entre Lyon et Paris avec le théoreme de Pythagore</li>
+            <textarea id="sqlCode8" rows="5" cols="80" placeholder="Le resultat en km"></textarea>
+            <li>Calculer la distance entre Lyon et Paris (avec courbure de la Terre - Formule Haversine)</li>
+            <textarea id="sqlCode9" rows="5" cols="80" placeholder="Le resultat en km"></textarea>
+        </ol>
+    </div>
+    <br>
+    <button onclick="test2()" class="btn-grad">Vérifier le code SQL</button>
+    <div id="result">Resultat de la vérification :</div>
+    <a href="index3.html" class="btn-nav">3/ Exercice export visuel des données ></a><br><br>
+    <a href="correction/villesrequets.sql" class="">Correction</a>
+</body>
+<script src="documents/script2.js"></script>
+</html>
