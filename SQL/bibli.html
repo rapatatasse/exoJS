@@ -140,5 +140,126 @@
             </code>
         </div>
     </div>
+    <h2>Exemple avec cas pratiques</h2>
+    <div class="section">
+        <h3>Modélisation d'une Base de Données pour un SAV (Service Après-Vente) de Machines</h3>
+        <p>Voici la structure de la base de données :</p>
+
+        <h4>Tables :</h4>
+        <div class="example">
+            <h5>1️⃣ Machines</h5>
+            <ul>
+                <li><strong>id</strong> (INT, PK) → Identifiant unique de la machine</li>
+                <li><strong>reference</strong> (VARCHAR(50)) → Référence de la machine</li>
+                <li><strong>modele</strong> (VARCHAR(100)) → Modèle de la machine</li>
+                <li><strong>date_achat</strong> (DATE) → Date d'achat de la machine</li>
+            </ul>
+
+            <h5>2️⃣ Clients</h5>
+            <ul>
+                <li><strong>id</strong> (INT, PK) → Identifiant unique du client</li>
+                <li><strong>nom</strong> (VARCHAR(100)) → Nom du client</li>
+                <li><strong>prenom</strong> (VARCHAR(100)) → Prénom du client</li>
+                <li><strong>email</strong> (VARCHAR(100), UNIQUE) → Email du client</li>
+                <li><strong>telephone</strong> (VARCHAR(15)) → Téléphone du client</li>
+            </ul>
+
+            <h5>3️⃣ Techniciens</h5>
+            <ul>
+                <li><strong>id</strong> (INT, PK) → Identifiant unique du technicien</li>
+                <li><strong>nom</strong> (VARCHAR(100)) → Nom du technicien</li>
+                <li><strong>prenom</strong> (VARCHAR(100)) → Prénom du technicien</li>
+                <li><strong>specialite</strong> (VARCHAR(100)) → Spécialité du technicien</li>
+            </ul>
+
+            <h5>4️⃣ Interventions</h5>
+            <ul>
+                <li><strong>id</strong> (INT, PK) → Identifiant unique de l'intervention</li>
+                <li><strong>machine_id</strong> (INT, FK → Machines.id) → Machine concernée</li>
+                <li><strong>client_id</strong> (INT, FK → Clients.id) → Client propriétaire</li>
+                <li><strong>technicien_id</strong> (INT, FK → Techniciens.id) → Technicien en charge</li>
+                <li><strong>date_intervention</strong> (DATE) → Date de l'intervention</li>
+                <li><strong>description</strong> (TEXT) → Description du problème et de l'intervention</li>
+                <li><strong>statut</strong> (VARCHAR(50)) → Statut de l'intervention (En cours, Terminée, Annulée)</li>
+            </ul>
+        </div>
+
+        <h4>🔎 10 Questions SQL (Niveau Croissant) :</h4>
+        <div class="example">
+            <h5>1️⃣ Lister toutes les machines avec leur référence et leur modèle</h5>
+            <code>
+                SELECT reference, modele 
+                FROM Machines;
+            </code>
+
+            <h5>2️⃣ Afficher la liste des clients avec leur nom, prénom et email</h5>
+            <code>
+                SELECT nom, prenom, email 
+                FROM Clients;
+            </code>
+
+            <h5>3️⃣ Trouver toutes les interventions réalisées après le 1er janvier 2023</h5>
+            <code>
+                SELECT * 
+                FROM Interventions 
+                WHERE date_intervention > '2023-01-01';
+            </code>
+
+            <h5>4️⃣ Afficher le nombre total d'interventions enregistrées</h5>
+            <code>
+                SELECT COUNT(*) AS nombre_interventions 
+                FROM Interventions;
+            </code>
+
+            <h5>5️⃣ Lister les interventions avec le nom du client, la référence de la machine et la date d'intervention</h5>
+            <code>
+                SELECT c.nom AS client, c.prenom, m.reference AS machine, i.date_intervention 
+                FROM Interventions i
+                JOIN Clients c ON i.client_id = c.id
+                JOIN Machines m ON i.machine_id = m.id;
+            </code>
+
+            <h5>6️⃣ Afficher les techniciens et le nombre d'interventions qu'ils ont réalisées</h5>
+            <code>
+                SELECT t.nom, t.prenom, COUNT(i.id) AS nombre_interventions
+                FROM Techniciens t
+                LEFT JOIN Interventions i ON t.id = i.technicien_id
+                GROUP BY t.nom, t.prenom;
+            </code>
+
+            <h5>7️⃣ Afficher le nombre de machines possédées par chaque client</h5>
+            <code>
+                SELECT c.nom, c.prenom, COUNT(m.id) AS nombre_machines
+                FROM Clients c
+                JOIN Machines m ON c.id = m.id
+                GROUP BY c.nom, c.prenom;
+            </code>
+
+            <h5>8️⃣ Lister les clients ayant eu plus de 3 interventions</h5>
+            <code>
+                SELECT c.nom, c.prenom, COUNT(i.id) AS nombre_interventions
+                FROM Clients c
+                JOIN Interventions i ON c.id = i.client_id
+                GROUP BY c.nom, c.prenom
+                HAVING COUNT(i.id) > 3;
+            </code>
+
+            <h5>9️⃣ Afficher l'âge moyen des machines en années</h5>
+            <code>
+                SELECT ROUND(AVG(YEAR(CURDATE()) - YEAR(date_achat))) AS age_moyen
+                FROM Machines;
+            </code>
+
+            <h5>🔟 Trouver les techniciens qui ont travaillé sur plusieurs interventions pour la même machine</h5>
+            <code>
+                SELECT i.machine_id, t.nom, t.prenom, COUNT(i.id) AS nombre_interventions
+                FROM Interventions i
+                JOIN Techniciens t ON i.technicien_id = t.id
+                GROUP BY i.machine_id, t.nom, t.prenom
+                HAVING COUNT(i.id) > 1;
+            </code>
+        </div>
+
+    </div>
 </body>
 </html>
